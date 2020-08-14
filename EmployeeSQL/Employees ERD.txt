@@ -1,0 +1,37 @@
+Employees ERD
+
+Departments
+-
+'dept_no', VARCHAR(50) PK
+'dept_name' VARCHAR(50)
+
+Deparment_Employees
+-
+'emp_no', int PK
+'emp_name' VARCHAR(100)
+
+Department_Manager
+-
+'dept_no,dept_name', VARCHAR(100) PK
+'dept_no', VARCHAR(30)
+'emp_no', int
+
+Employees
+-
+'emp_title_id', VARCHAR(50) PK
+'emp_no',
+'birth_date', datetime
+'first_name', VARCHAR(30)
+'last_name', VARCHAR(30)
+'sex', VARCHAR(30)
+'hire_date', datetime
+
+Salaries
+-
+'emp_no', int PK
+'salary', int
+
+Titles
+-
+'title_id', VARCHAR(30) PK
+'title' VARCHAR(30)

@@ -1,0 +1,58 @@
+SQL Homework - Queries
+
+SELECT emp_no as id, emp_no, last_name, first_name, sex, hire_date
+FROM employees
+
+SELECT emp_no as id, salary
+FROM  salaries
+
+SELECT emp.emp_no, emp.last_name, emp.first_name, emp.sex, hire_date, sal.salary
+FROM employees as emp 
+left JOIN salaries as sal on (emp.emp_no = sal.emp_no);
+
+SELECT emp_no, last_name, first_name, hire_date
+FROM employees 
+WHERE hire_date BETWEEN '1986/01/0 and 1986/12/31';
+
+SELECT emp_no FROM dept_manager
+SELECT * FROM departments
+SELECT * FROM employees
+
+SELECT depts.dept_no, depts.dept_name, mgr."emp_no", emps.last_name, emps.first_name
+FROM departments as depts
+LEFT JOIN dept_manager as mgr on mgr.dept_no = depts.dept_no
+LEFT JOIN employees as emps on emps.emp_no = mgr.emp_no;
+
+SELECT emps.emp_no, emps.last_name, emps.first_name, depts.dept_name
+FROM employees as emps
+LEFT JOIN dept_emp as dept on emps.emp_no = dept.emp_no
+LEFT JOIN departments as depts on depts.dept_no = dept.dept_no;
+
+SELECT emps.first_name, emps.last_name, emps.sex
+FROM employees as emps
+Where emps.first_name ='Hercules' and emps.last_name like 'B%';
+
+SELECT emps.emp_no, emps.last_name, emps.first_name, depts.dept_name
+FROM employees as emps
+LEFT JOIN dept_emp as dept on emps.emp_no = dept.emp_no
+LEFT JOIN departments as depts on depts.dept_no = dept.dept_no
+WHERE depts.dept_name = 'Sales'
+
+SELECT emps.emp_no, emps.last_name, emps.first_name, depts.dept_name
+FROM employees as emps
+LEFT JOIN dept_emp as dept on emps.emp_no = dept.emp_no
+LEFT JOIN departments as depts on depts.dept_no = dept.dept_no
+WHERE depts.dept_name = 'Sales' or depts.dept_name = 'Development'
+
+
+SELECT emps.emp_no, emps.last_name, emps.first_name, depts.dept_name
+FROM employees as emps
+LEFT JOIN dept_emp as dept on emps.emp_no = dept.emp_no
+LEFT JOIN departments as depts on depts.dept_no = dept.dept_no
+WHERE depts.dept_name = 'Sales' or depts.dept_name = 'Development'
+
+
+SELECT COUNT(emps.last_name), emps.last_name
+FROM employees as emps
+GROUP BY emps.last_name
+ORDER BY COUNT(emps.last_name) DESC;
